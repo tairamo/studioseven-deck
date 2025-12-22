@@ -772,6 +772,137 @@
             opacity: 0.7;
             margin-bottom: 2rem;
         }
+
+        /* ============================================
+           VALUE PROPOSITION SLIDE
+           ============================================ */
+        .price-comparison {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 2.5rem auto;
+            flex-wrap: wrap;
+        }
+
+        .price-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem 2.5rem;
+            border-radius: 16px;
+            min-width: 200px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .slide.active .price-box.legacy { animation-delay: 0.2s; }
+        .slide.active .price-vs { animation-delay: 0.3s; }
+        .slide.active .price-box.studio7 { animation-delay: 0.4s; }
+
+        .price-box.legacy {
+            background: rgba(255, 100, 100, 0.1);
+            border: 1px solid rgba(255, 100, 100, 0.3);
+        }
+
+        .price-box.studio7 {
+            background: rgba(79, 140, 255, 0.15);
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 0 30px rgba(79, 140, 255, 0.2);
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-amount {
+            font-family: var(--font-product);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+        }
+
+        .price-box.legacy .price-amount {
+            color: rgba(255, 150, 150, 0.9);
+            text-decoration: line-through;
+            text-decoration-color: rgba(255, 100, 100, 0.6);
+        }
+
+        .price-box.studio7 .price-amount {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price-detail {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-top: 0.25rem;
+        }
+
+        .price-vs {
+            font-size: 1.5rem;
+            font-weight: 700;
+            opacity: 0.5;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .value-features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .slide.active .value-item:nth-child(1) { animation-delay: 0.5s; }
+        .slide.active .value-item:nth-child(2) { animation-delay: 0.6s; }
+        .slide.active .value-item:nth-child(3) { animation-delay: 0.7s; }
+
+        .value-icon {
+            font-size: 1.5rem;
+        }
+
+        .value-text {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .price-comparison {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .price-vs {
+                transform: rotate(90deg);
+            }
+
+            .value-features {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -856,7 +987,7 @@
          ============================================ -->
     <div class="top-bar">
         <img src="https://firebasestorage.googleapis.com/v0/b/podcastsite-1bedc.appspot.com/o/s7logo.svg?alt=media&token=75a67a81-974d-4b60-a8ad-1026132e59c2" alt="Studio 7" class="top-logo">
-        <span class="slide-number" id="slideNumber">1 / 8</span>
+        <span class="slide-number" id="slideNumber">1 / 9</span>
     </div>
 
     <!-- ============================================
@@ -912,8 +1043,45 @@
             </div>
         </section>
 
-        <!-- ========== SLIDE 4: WHY NOW ========== -->
+        <!-- ========== SLIDE 4: VALUE PROPOSITION ========== -->
         <section class="slide" id="slide-4" data-slide="4">
+            <div class="slide-content">
+                <h2 class="slide-title gradient">Shopify for Radio Stations</h2>
+                <p class="slide-subtitle">Modular AI tools that let any station automate production, schedule smarter, and own their audience</p>
+
+                <div class="price-comparison">
+                    <div class="price-box legacy">
+                        <span class="price-label">Legacy Systems</span>
+                        <span class="price-amount">$50k+</span>
+                        <span class="price-detail">upfront + maintenance</span>
+                    </div>
+                    <div class="price-vs">vs</div>
+                    <div class="price-box studio7">
+                        <span class="price-label"><span class="product-name">Studio 7</span></span>
+                        <span class="price-amount">$200-1,500</span>
+                        <span class="price-detail">/month • no lock-in</span>
+                    </div>
+                </div>
+
+                <div class="value-features">
+                    <div class="value-item">
+                        <div class="value-icon">⚡</div>
+                        <div class="value-text">Automate Production</div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">📊</div>
+                        <div class="value-text">Schedule Smarter</div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">🎯</div>
+                        <div class="value-text">Own Your Audience</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SLIDE 5: WHY NOW ========== -->
+        <section class="slide" id="slide-5" data-slide="5">
             <div class="slide-content">
                 <h2 class="slide-title">Why Now?</h2>
                 <p class="slide-subtitle">The radio industry is ripe for AI transformation</p>
@@ -925,33 +1093,33 @@
             </div>
         </section>
 
-        <!-- ========== SLIDE 5: MARKET SIZE ========== -->
-        <section class="slide" id="slide-5" data-slide="5">
+        <!-- ========== SLIDE 6: MARKET SIZE ========== -->
+        <section class="slide" id="slide-6" data-slide="6">
             <div class="slide-content">
                 <h2 class="slide-title">Market Size</h2>
                 <div class="two-col">
                     <div>
                         <ul class="feature-list">
-                            <li>Initial target of <span class="highlight">400 clients</span> scaling to <span class="highlight">1,500 by 2029</span></li>
+                            <li>Initial target of <span class="highlight">400 clients</span> scaling to <span class="highlight">1,500 by 2030</span></li>
                             <li>Revenue from key services: <span class="product-name">Radio Copilot</span>, <span class="product-name">TrendingContent</span>, and <span class="product-name">AI Showprep</span></li>
                         </ul>
                     </div>
                     <div>
                         <table class="market-table">
                             <tr><th>Year</th><th>Revenue</th></tr>
-                            <tr><td>2025</td><td>$678,380</td></tr>
-                            <tr><td>2026</td><td>$2,132,360</td></tr>
-                            <tr><td>2027</td><td>$3,865,000</td></tr>
-                            <tr><td>2028</td><td>$4,766,000</td></tr>
-                            <tr><td>2029</td><td>$6,105,600</td></tr>
+                            <tr><td>2026</td><td>$678,380</td></tr>
+                            <tr><td>2027</td><td>$2,132,360</td></tr>
+                            <tr><td>2028</td><td>$3,865,000</td></tr>
+                            <tr><td>2029</td><td>$4,766,000</td></tr>
+                            <tr><td>2030</td><td>$6,105,600</td></tr>
                         </table>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== SLIDE 6: PRODUCT ========== -->
-        <section class="slide" id="slide-6" data-slide="6">
+        <!-- ========== SLIDE 7: PRODUCT ========== -->
+        <section class="slide" id="slide-7" data-slide="7">
             <div class="slide-content">
                 <h2 class="slide-title">Product</h2>
                 <p class="investment-highlight">$500k</p>
@@ -965,8 +1133,8 @@
             </div>
         </section>
 
-        <!-- ========== SLIDE 7: TEAM ========== -->
-        <section class="slide" id="slide-7" data-slide="7">
+        <!-- ========== SLIDE 8: TEAM ========== -->
+        <section class="slide" id="slide-8" data-slide="8">
             <div class="slide-content">
                 <h2 class="slide-title">Team</h2>
                 <div class="team-grid">
@@ -976,26 +1144,26 @@
                         <p class="desc">Visionary leader in AI and media solutions</p>
                     </div>
                     <div class="team-card">
-                        <h3>Niklas Norden</h3>
+                        <h3>Annie Hua</h3>
                         <p class="role">CTO</p>
-                        <p class="desc">Expert in AI-driven technology</p>
+                        <p class="desc">Technical leadership & product development</p>
                     </div>
                     <div class="team-card">
                         <h3>Mattias Gustavsson</h3>
-                        <p class="role">CMO</p>
-                        <p class="desc">Proven track record in media marketing</p>
+                        <p class="role">COO</p>
+                        <p class="desc">Proven track record in media operations</p>
                     </div>
                     <div class="team-card">
-                        <h3>Annie Hua</h3>
-                        <p class="role">Director of Product</p>
-                        <p class="desc">Product Development leadership</p>
+                        <h3>Niklas Norden</h3>
+                        <p class="role">Advisor</p>
+                        <p class="desc">Expert in AI-driven technology</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== SLIDE 8: CONTACT ========== -->
-        <section class="slide" id="slide-8" data-slide="8">
+        <!-- ========== SLIDE 9: CONTACT ========== -->
+        <section class="slide" id="slide-9" data-slide="9">
             <div class="slide-content">
                 <img src="https://firebasestorage.googleapis.com/v0/b/podcastsite-1bedc.appspot.com/o/s7logo.svg?alt=media&token=75a67a81-974d-4b60-a8ad-1026132e59c2" alt="Studio 7" class="contact-logo">
                 <h2 class="slide-title">Get In Touch</h2>
@@ -1039,6 +1207,7 @@
             <div class="indicator-dot" onclick="goToSlide(6)"></div>
             <div class="indicator-dot" onclick="goToSlide(7)"></div>
             <div class="indicator-dot" onclick="goToSlide(8)"></div>
+            <div class="indicator-dot" onclick="goToSlide(9)"></div>
         </div>
         <button class="nav-btn" id="nextBtn" onclick="nextSlide()" title="Next">
             <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
@@ -1057,7 +1226,7 @@
     <script>
         // State
         let currentSlide = 1;
-        const totalSlides = 8;
+        const totalSlides = 9;
         let autoPlayInterval = null;
         let isAutoPlaying = false;
 
